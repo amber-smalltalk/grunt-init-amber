@@ -20,7 +20,9 @@ _Windows users, see [the grunt-init documentation](http://gruntjs.com/project-sc
 
 At the command-line, cd into an empty directory, run this command and follow the prompts.
 
+
 ```
+bower install amber --save
 grunt-init amber
 ```
 
