@@ -4,7 +4,7 @@
 
 
 ## Installation
-Install [grunt-init](http://gruntjs.com/project-scaffolding) if you have not already done so.
+Install [grunt-cli](http://gruntjs.com/getting-started) and [grunt-init](http://gruntjs.com/project-scaffolding) if you have not already done so.
 
 Then place the template of this project in your `~/.grunt-init/` directory.
 
