@@ -1,14 +1,30 @@
-Note: These instructions do not yet work.
+Note: These instructions are work in progress and have not been fully tested yet. However most of it is correct and you are invited to check it out and contribute.
 
-# grunt-init-amber
 
-> Create an [Amber Smalltalk](http://amber-lang.net) based application.
+
+# Aim
+
+The content of this project is an [Amber Smalltalk](http://amber-lang.net) project template.
+
+The  [grunt-init](http://gruntjs.com/project-scaffolding) tool uses this to create an Amber based application.
+grunt-init-amber
+
+
+
+## Prerequisites
+
+In a terminal check
+
+      grunt-init --version
+      
+If it is not installed install it according to [grunt-init project scaffolding](http://gruntjs.com/project-scaffolding).
+
+In case grunt-cli is not installed use [these instructions](http://gruntjs.com/getting-started).
 
 
 ## Installation
-Install [grunt-cli](http://gruntjs.com/getting-started) and [grunt-init](http://gruntjs.com/project-scaffolding) if you have not already done so.
 
-Then place the template of this project in your `~/.grunt-init/` directory.
+ It has to go into your `~/.grunt-init/` directory.
 
 The recommeded way is to clone it with git as follows:
 
