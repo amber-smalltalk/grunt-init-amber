@@ -1,3 +1,5 @@
+Note: These instructions do not yet work.
+
 # grunt-init-amber
 
 > Create an [Amber Smalltalk](http://amber-lang.net) based application.
