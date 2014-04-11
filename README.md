@@ -13,7 +13,15 @@ grunt-init-amber
 
 ## Prerequisites
 
-In a terminal check
+In a terminal check if you have installed the amber command line version 
+
+      amber repl
+      
+If not do so 
+
+      npm install -g amber
+
+Then check for `grunt-init`
 
       grunt-init --version
       
@@ -24,9 +32,9 @@ In case grunt-cli is not installed use [these instructions](http://gruntjs.com/g
 
 ## Installation
 
- It has to go into your `~/.grunt-init/` directory.
+ The content of this project has to go into your `~/.grunt-init/` directory.
 
-The recommeded way is to clone it with git as follows:
+The recommeded way is to clone the project with git as follows:
 
 ```
 git clone git://github.com/hhzl/grunt-init-amber.git ~/.grunt-init/amber
@@ -40,9 +48,24 @@ At the command-line, cd into an empty directory, run this command and follow the
 
 
 ```
-bower install amber --save
 grunt-init amber
 ```
 
+Then you will be asked questions about your project. 
+
 **Note** _that this command will generate Amber project files in the current directory,
 so be sure to change to a new directory first if you do not want to overwrite existing files._
+
+
+Then add the local Amber Smalltalk installation with
+
+```
+bower install amber --save
+```
+
+Start the Amber server
+```
+amber serve
+```
+
+
