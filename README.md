@@ -57,7 +57,7 @@ Then you will be asked questions about your project.
 so be sure to change to a new directory first if you do not want to overwrite existing files._
 
 
-Then add the local Amber Smalltalk installation with
+Then add the local Amber Smalltalk web client side installation with
 
 ```
 bower install amber --save
