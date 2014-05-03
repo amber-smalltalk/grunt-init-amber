@@ -79,6 +79,7 @@ exports.template = function(grunt, init, done) {
           "**/.*",
           "node_modules",
           "bower_components",
+          "/test_runner.js",
           "test",
           "tests"
         ],
