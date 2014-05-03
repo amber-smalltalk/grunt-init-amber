@@ -75,6 +75,13 @@ exports.template = function(grunt, init, done) {
         "name": props.name,
         "description": props.description,
         "version": props.version,
+        "ignore": [
+          "**/.*",
+          "node_modules",
+          "bower_components",
+          "test",
+          "tests"
+        ],
         "authors": [
             {
                 "name": props.author_name,
