@@ -12,10 +12,11 @@ module.exports = function(grunt) {
       '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
       ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
     // Task configuration.
+  });
 
-    // These plugins provide necessary tasks.
-    //grunt.loadNpmTasks('grunt-amberc');
+  // These plugins provide necessary tasks.
+  //grunt.loadNpmTasks('grunt-amberc');
 
-    // Default task.
-    //grunt.registerTask('default', ['']);
+  // Default task.
+  //grunt.registerTask('default', ['']);
 };
