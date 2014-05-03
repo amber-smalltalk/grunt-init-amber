@@ -6,7 +6,7 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     // Metadata.
-    pkg: grunt.file.readJSON('{%= amberjson %}'),
+    // pkg: grunt.file.readJSON('{%= amberjson %}'),
     banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
       '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
       '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +

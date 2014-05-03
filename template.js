@@ -48,15 +48,6 @@ exports.template = function(grunt, init, done) {
     init.prompt('author_email'),
     init.prompt('author_url')
   ], function(err, props) {
-    // A few additional properties.
-    props.amberjson = props.name + '.amber.json';
-    props.dependencies = {'amber': '~0.10.0'};
-
-    props.keywords = ['Amber', 'Smalltalk'];
-
-    //props.devDependencies = {'amber': '~0.10.0'};
-    props.node_version = '>= 0.8.0';
-
     // Files to copy (and process).
     var files = init.filesToCopy(props);
 
@@ -66,8 +57,27 @@ exports.template = function(grunt, init, done) {
     // Actually copy (and process) files.
     init.copyAndProcess(files, props, {noProcess: 'libs/**'});
 
+    // Clean up non-npm props.
+    var namespace = props.namespace;
+    delete props.namespace;
+    var amberVersion = props.amber_version;
+    delete props.amber_version;
+
+    // Add '~' at the beginning if version is without operation (starts with number)
+    if (amberVersion.match(/^\d/)) {
+      amberVersion = '~' + amberVersion;
+    }
+
+    // A few additional properties.
+    props.keywords = ['Amber', 'Smalltalk'];
+    props.devDependencies = {
+      "grunt": "~0.4.0",
+      "amber-dev": "0.0.3"
+    };
+    props.node_version = '>= 0.8.0';
+
     // Generate package.json file, used by npm and grunt.
-    //init.writePackageJSON('package.json', props);
+    init.writePackageJSON('package.json', props);
 
     // generate bower.json file
     grunt.file.write('bower.json', JSON.stringify({
@@ -95,7 +105,7 @@ exports.template = function(grunt, init, done) {
         "license": props.licenses,
         "private": false,
         "dependencies": {
-            "amber": "~" + props.amber_version
+            "amber": amberVersion
         }
     }, null, 4));
 
