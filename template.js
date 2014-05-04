@@ -24,6 +24,7 @@ exports.warnOn = '*';
 
 // The actual init template.
 exports.template = function(grunt, init, done) {
+  init.prompts.name.message= 'Name of the Amber application (package + class).';
   init.prompts.name.validator= /^[A-Z][A-Za-z0-9]*$/;
   init.prompts.name.warning= 'Must be a valid class name: only alphanumeric and starting with an uppercase letter!';
 
@@ -34,14 +35,14 @@ exports.template = function(grunt, init, done) {
     init.prompt('description', 'Amber Application.'),
     {
       name: 'namespace',
-      message: 'The namespace used to store your Amber Packages. (Required for the AMD package definition).',
+      message: 'Namespace of the new Amber package.',
       validator: /^[a-z0-9\-]+$/,
       warning: 'Only lowercase letters, number, and - are allowed in namespaces!'
     },
     {
       name: 'amber_version',
-      default: '>= 0.12.4',
-      message: 'The version of Amber to use. Must be >= 0.12.4'
+      default: '>=0.12.4',
+      message: 'Version of Amber to use. Must be >=0.12.4'
     },
     init.prompt('version'),
     init.prompt('repository'),
