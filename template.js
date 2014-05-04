@@ -36,8 +36,8 @@ exports.template = function(grunt, init, done) {
     {
       name: 'namespace',
       message: 'Namespace of the new Amber package.',
-      validator: /^[a-z0-9\-]+$/,
-      warning: 'Only lowercase letters, number, and - are allowed in namespaces!'
+      validator: /^[a-z][a-z0-9\-]*$/,
+      warning: 'Only lowercase letters, numbers, and - are allowed in namespaces!'
     },
     {
       name: 'amber_version',
