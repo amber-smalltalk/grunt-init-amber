@@ -10,7 +10,7 @@ module.exports = function(grunt) {
 
   // Default task.
   //grunt.registerTask('default', ['']);
-  grunt.registerTask('test', ['amberc:test_runner', 'execute:test_runner_run', 'clean:test_runner_clean']);
+  grunt.registerTask('test', ['amberc:test_runner', 'execute:test_runner', 'clean:test_runner']);
 
   // Project configuration.
   grunt.initConfig({
@@ -42,13 +42,13 @@ module.exports = function(grunt) {
     },
 
     execute: {
-      test_runner_run: {
+      test_runner: {
         src: ['test_runner.js']
       }
     },
 
     clean: {
-      test_runner_clean: ['test_runner.js']
+      test_runner: ['test_runner.js']
     }
   });
 
