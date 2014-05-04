@@ -70,11 +70,6 @@ exports.template = function(grunt, init, done) {
       validator: /^[a-z][a-z0-9\-]*$/,
       warning: 'Only lowercase letters, numbers, and - are allowed in namespaces!'
     },
-    {
-      name: 'amber_version',
-      default: '>=0.12.4',
-      message: 'Version of Amber to use. Must be >=0.12.4'
-    },
     init.prompt('author_url'),
     init.prompt('homepage'),
     init.prompt('bugs'),
@@ -91,13 +86,6 @@ exports.template = function(grunt, init, done) {
 
     // Clean up non-npm props.
     delete props.namespace;
-    var amberVersion = props.amber_version;
-    delete props.amber_version;
-
-    // Add '~' at the beginning if version is without operation (starts with number)
-    if (amberVersion.match(/^\d/)) {
-      amberVersion = '~' + amberVersion;
-    }
 
     // A few additional properties.
     props.keywords = ['Amber', 'Smalltalk'];
@@ -141,7 +129,7 @@ exports.template = function(grunt, init, done) {
         "license": props.licenses,
         "private": false,
         "dependencies": {
-            "amber": amberVersion
+            "amber": "~0.12.4"
         }
     }, null, 4));
 
