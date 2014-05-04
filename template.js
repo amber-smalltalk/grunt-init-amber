@@ -24,7 +24,7 @@ exports.warnOn = '*';
 
 // The actual init template.
 exports.template = function(grunt, init, done) {
-  init.prompts.name.message= 'Name of the Amber application (package + class).';
+  init.prompts.name.message= 'Name of the Amber application.';
   init.prompts.name.validator= /^[A-Z][A-Za-z0-9]*$/;
   init.prompts.name.warning= 'Must be a valid class name: only alphanumeric and starting with an uppercase letter!';
 
