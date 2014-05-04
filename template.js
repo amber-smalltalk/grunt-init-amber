@@ -24,18 +24,49 @@ exports.warnOn = '*';
 
 // The actual init template.
 exports.template = function(grunt, init, done) {
+  var remembered = {};
+  function rememberViaValidator(name) {
+    var old = init.prompts[name].validator || function (line) {
+      return true;
+    };
+    init.prompts[name].validator = old.length == 1 ? function (line) {
+      remembered[name] = line;
+      return old.call(this, line);
+    } : function (line, next) {
+      remembered[name] = line;
+      return old.call(this, line, next);
+    }; //apply would not work, .length is used to call it differently.
+  }
+
   init.prompts.name.message= 'Name of the Amber application.';
-  init.prompts.name.validator= /^[A-Z][A-Za-z0-9]*$/;
+  init.prompts.name.validator= function (line) { return /^[A-Z][A-Za-z0-9]*$/.test(line) };
   init.prompts.name.warning= 'Must be a valid class name: only alphanumeric and starting with an uppercase letter!';
+  rememberViaValidator('author_email');
+  rememberViaValidator('repository');
+  rememberViaValidator('name');
 
   init.process({type: 'amber'}, [
     // Prompt for these values.
     init.prompt('name', 'AmberApplication'),
     init.prompt('title'),
     init.prompt('description', 'Amber Application.'),
+    init.prompt('author_name'),
+    init.prompt('author_email'),
+    init.prompt('version'),
+    init.prompt('repository'),
     {
       name: 'namespace',
       message: 'Namespace of the new Amber package.',
+      altDefault: function(value, data, done) {
+        var mail = remembered.author_email || "none";
+        var repo = remembered.repository || "none";
+        var match = repo.match(/:\/\/([^/]*)\/((.*)\/)?/);
+        var source = match && match[1] ? match[1].split(/\W/).reverse().concat(match[3] ? match[3].split(/\W/) : [])
+          : mail !== "none" ? mail.split(/\W/).reverse()
+          : ('st' + Math.random().toString(32)).split(/\W/);
+        value = (source.join('-') + '-' + remembered.name).toLowerCase();
+        done(null, value);
+      },
       validator: /^[a-z][a-z0-9\-]*$/,
       warning: 'Only lowercase letters, numbers, and - are allowed in namespaces!'
     },
@@ -44,14 +75,10 @@ exports.template = function(grunt, init, done) {
       default: '>=0.12.4',
       message: 'Version of Amber to use. Must be >=0.12.4'
     },
-    init.prompt('version'),
-    init.prompt('repository'),
+    init.prompt('author_url'),
     init.prompt('homepage'),
     init.prompt('bugs'),
-    init.prompt('licenses', 'MIT'),
-    init.prompt('author_name'),
-    init.prompt('author_email'),
-    init.prompt('author_url')
+    init.prompt('licenses', 'MIT')
   ], function(err, props) {
     // Files to copy (and process).
     var files = init.filesToCopy(props);
