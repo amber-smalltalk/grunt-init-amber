@@ -1,5 +1,7 @@
 {
   "gitignore-file": ".gitignore",
   "src/name.js": "src/{%= name %}.js",
-  "src/name.st": "src/{%= name %}.st"
+  "src/name.st": "src/{%= name %}.st",
+  "src/test.js": "src/{%= name %}-Tests.js",
+  "src/test.st": "src/{%= name %}-Tests.st"
 }

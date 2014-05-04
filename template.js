@@ -74,6 +74,9 @@ exports.template = function(grunt, init, done) {
       "amber-dev": "0.0.3"
     };
     props.node_version = '>= 0.8.0';
+    props.scripts = {
+      "test": "grunt amberc:test_runner && node test_runner.js && ( rm test_runner.js || del test_runner.js )"
+    };
 
     // Generate package.json file, used by npm and grunt.
     init.writePackageJSON('package.json', props);
@@ -88,6 +91,7 @@ exports.template = function(grunt, init, done) {
           "**/.*",
           "node_modules",
           "bower_components",
+          "/test_runner.js",
           "test",
           "tests"
         ],
