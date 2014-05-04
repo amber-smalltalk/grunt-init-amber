@@ -76,11 +76,13 @@ exports.template = function(grunt, init, done) {
     props.keywords = ['Amber', 'Smalltalk'];
     props.devDependencies = {
       "grunt": "~0.4.0",
+      "grunt-execute": "~0.2.1",
+      "grunt-contrib-clean": "~0.5.0",
       "amber-dev": "0.0.3"
     };
     props.node_version = '>= 0.8.0';
     props.scripts = {
-      "test": "grunt amberc:test_runner && node test_runner.js && ( rm test_runner.js || del test_runner.js )"
+      "test": "grunt test"
     };
 
     // Generate package.json file, used by npm and grunt.

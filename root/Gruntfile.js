@@ -3,6 +3,15 @@
 module.exports = function(grunt) {
   var path = require('path');
 
+  // These plugins provide necessary tasks.
+  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-execute');
+  grunt.loadNpmTasks('amber-dev');
+
+  // Default task.
+  //grunt.registerTask('default', ['']);
+  grunt.registerTask('test', ['amberc:test_runner', 'execute:test_runner_run', 'clean:test_runner_clean']);
+
   // Project configuration.
   grunt.initConfig({
     // Metadata.
@@ -12,6 +21,7 @@ module.exports = function(grunt) {
       '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
       '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
       ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
+    // task configuration
     amberc: {
       options: {
         amber_dir: path.join(__dirname, "bower_components", "amber"),
@@ -29,13 +39,17 @@ module.exports = function(grunt) {
         main_class: 'NodeTestRunner',
         output_name: 'test_runner'
       }
+    },
+
+    execute: {
+      test_runner_run: {
+        src: ['test_runner.js']
+      }
+    },
+
+    clean: {
+      test_runner_clean: ['test_runner.js']
     }
-    // Task configuration.
   });
 
-  // These plugins provide necessary tasks.
-  grunt.loadNpmTasks('amber-dev');
-
-  // Default task.
-  //grunt.registerTask('default', ['']);
 };
