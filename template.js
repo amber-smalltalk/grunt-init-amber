@@ -32,12 +32,14 @@ exports.template = function(grunt, init, done) {
     init.prompt('description', 'Amber Application.'),
     {
       name: 'namespace',
-      message: 'The namespace used to store your Amber Packages.',
+      message: 'The namespace used to store your Amber Packages. (Required for the AMD package definition).',
+      validator: /^[a-z0-9\-]+$/,
+      warning: 'Only lowercase letters, number, and - are allowed in namespaces!'
     },
     {
       name: 'amber_version',
       default: '>= 0.12.4',
-      message: 'The version of Amber to use. Must be >= 0.12.4',
+      message: 'The version of Amber to use. Must be >= 0.12.4'
     },
     init.prompt('version'),
     init.prompt('repository'),
