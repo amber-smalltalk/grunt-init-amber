@@ -58,7 +58,6 @@ exports.template = function(grunt, init, done) {
     init.copyAndProcess(files, props, {noProcess: 'libs/**'});
 
     // Clean up non-npm props.
-    var namespace = props.namespace;
     delete props.namespace;
     var amberVersion = props.amber_version;
     delete props.amber_version;
