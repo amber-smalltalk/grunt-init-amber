@@ -38,15 +38,27 @@ exports.template = function(grunt, init, done) {
     }; //apply would not work, .length is used to call it differently.
   }
 
-  init.prompts.name.message= 'Name of the Amber application.';
+  function capitalize(string) {
+    return string[0].toUpperCase() + string.slice(1).toLowerCase();
+  }
+
+  init.prompts.name.message= 'Main class and package of Amber application.';
   init.prompts.name.validator= function (line) { return /^[A-Z][A-Za-z0-9]*$/.test(line) };
   init.prompts.name.warning= 'Must be a valid class name: only alphanumeric and starting with an uppercase letter!';
   rememberViaValidator('name');
+  rememberViaValidator('title');
 
   init.process({type: 'amber'}, [
     // Prompt for these values.
-    init.prompt('name', 'AcmeApp'),
     init.prompt('title', 'ACME Application'),
+    init.prompt('name', function (value, data, done) {
+      var words = remembered.title.split(/\W/);
+      words = words.filter(function (x) {
+        return x && x !== "none";
+      }).map(capitalize);
+      value = words.length ? words.join('') : 'MysteriousApp';
+      done(null, value);
+    }),
     init.prompt('description', 'The ACME Application.'),
     init.prompt('author_name'),
     init.prompt('author_email'),
