@@ -41,15 +41,13 @@ exports.template = function(grunt, init, done) {
   init.prompts.name.message= 'Name of the Amber application.';
   init.prompts.name.validator= function (line) { return /^[A-Z][A-Za-z0-9]*$/.test(line) };
   init.prompts.name.warning= 'Must be a valid class name: only alphanumeric and starting with an uppercase letter!';
-  rememberViaValidator('author_email');
-  rememberViaValidator('repository');
   rememberViaValidator('name');
 
   init.process({type: 'amber'}, [
     // Prompt for these values.
-    init.prompt('name', 'AmberApplication'),
-    init.prompt('title'),
-    init.prompt('description', 'Amber Application.'),
+    init.prompt('name', 'AcmeApp'),
+    init.prompt('title', 'ACME Application'),
+    init.prompt('description', 'The ACME Application.'),
     init.prompt('author_name'),
     init.prompt('author_email'),
     init.prompt('version'),
@@ -58,13 +56,7 @@ exports.template = function(grunt, init, done) {
       name: 'namespace',
       message: 'Namespace of the new Amber package.',
       altDefault: function(value, data, done) {
-        var mail = remembered.author_email || "none";
-        var repo = remembered.repository || "none";
-        var match = repo.match(/:\/\/([^/]*)\/((.*)\/)?/);
-        var source = match && match[1] ? match[1].split(/\W/).reverse().concat(match[3] ? match[3].split(/\W/) : [])
-          : mail !== "none" ? mail.split(/\W/).reverse()
-          : ('st' + Math.random().toString(32)).split(/\W/);
-        value = (source.join('-') + '-' + remembered.name).toLowerCase();
+        value = 'amber-' + remembered.name.toLowerCase();
         done(null, value);
       },
       validator: /^[a-z][a-z0-9\-]*$/,
