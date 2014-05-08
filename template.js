@@ -42,7 +42,7 @@ exports.template = function(grunt, init, done) {
     return string[0].toUpperCase() + string.slice(1).toLowerCase();
   }
 
-  init.prompts.name.message= 'Main class and package of Amber application.';
+  init.prompts.name.message= 'Main class and package of Amber application.\nProject name is derived by lowercasing this.';
   init.prompts.name.validator= function (line) { return /^[A-Z][A-Za-z0-9]*$/.test(line) };
   init.prompts.name.warning= 'Must be a valid class name: only alphanumeric and starting with an uppercase letter!';
   rememberViaValidator('name');
@@ -90,6 +90,8 @@ exports.template = function(grunt, init, done) {
 
     // Clean up non-npm props.
     delete props.namespace;
+
+    props.name = props.name.toLowerCase();
 
     // A few additional properties.
     props.keywords = ['Amber', 'Smalltalk'];
