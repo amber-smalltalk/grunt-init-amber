@@ -50,8 +50,6 @@ exports.template = function(grunt, init, done) {
     init.prompt('description', 'The ACME Application.'),
     init.prompt('author_name'),
     init.prompt('author_email'),
-    init.prompt('version'),
-    init.prompt('repository'),
     {
       name: 'namespace',
       message: 'Namespace of the new Amber package.',
@@ -62,9 +60,11 @@ exports.template = function(grunt, init, done) {
       validator: /^[a-z][a-z0-9\-]*$/,
       warning: 'Only lowercase letters, numbers, and - are allowed in namespaces!'
     },
-    init.prompt('author_url'),
+    init.prompt('version'),
+    init.prompt('repository'),
     init.prompt('homepage'),
     init.prompt('bugs'),
+    init.prompt('author_url'),
     init.prompt('licenses', 'MIT')
   ], function(err, props) {
     // Files to copy (and process).
