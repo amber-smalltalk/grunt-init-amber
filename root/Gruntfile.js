@@ -25,6 +25,7 @@ module.exports = function(grunt) {
     amberc: {
       options: {
         amber_dir: path.join(__dirname, "bower_components", "amber"),
+        library_dirs: ['src'],
         closure_jar: ''
       },
       test_runner: {
@@ -35,7 +36,6 @@ module.exports = function(grunt) {
           'SUnit',
           '{%= name %}-Tests' /* add other test packages here */
         ],
-        options: { library_dirs: ['src'] },
         main_class: 'NodeTestRunner',
         output_name: 'test_runner'
       }

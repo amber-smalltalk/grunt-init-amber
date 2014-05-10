@@ -69,7 +69,7 @@ exports.template = function(grunt, init, done) {
         value = 'amber-' + remembered.name.toLowerCase();
         done(null, value);
       },
-      validator: /^[a-z][a-z0-9\-]*$/,
+      validator: /^[a-z][a-z0-9/\-]*$/,
       warning: 'Only lowercase letters, numbers, and - are allowed in namespaces!'
     },
     init.prompt('version'),
@@ -99,7 +99,7 @@ exports.template = function(grunt, init, done) {
       "grunt": "~0.4.0",
       "grunt-execute": "~0.2.1",
       "grunt-contrib-clean": "~0.5.0",
-      "amber-dev": "0.0.3"
+      "amber-dev": "~0.1.0"
     };
     props.node_version = '>= 0.8.0';
     props.scripts = {
