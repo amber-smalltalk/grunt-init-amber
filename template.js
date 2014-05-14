@@ -26,16 +26,29 @@ exports.warnOn = '*';
 exports.template = function(grunt, init, done) {
   var remembered = {};
   function rememberViaValidator(name) {
-    var old = init.prompts[name].validator || function (line) {
+    var oldValidator = init.prompts[name].validator || function (line) {
       return true;
     };
-    init.prompts[name].validator = old.length == 1 ? function (line) {
-      remembered[name] = line;
-      return old.call(this, line);
-    } : function (line, next) {
-      remembered[name] = line;
-      return old.call(this, line, next);
-    }; //apply would not work, .length is used to call it differently.
+
+    var newValidator;
+    switch (oldValidator.length) { //apply would not work, .length is used to call it differently
+      case 1:
+        newValidator = function (line) {
+          remembered[name] = line;
+          return oldValidator.call(this, line);
+        };
+        break;
+      case 2:
+        newValidator = function (line, next) {
+          remembered[name] = line;
+          return oldValidator.call(this, line, next);
+        };
+        break;
+      default:
+        throw new Error("Panic: " + oldValidator.length + "-argument validator for " + name + ".");
+    }
+
+    init.prompts[name].validator = newValidator;
   }
 
   function capitalize(string) {
@@ -50,7 +63,7 @@ exports.template = function(grunt, init, done) {
 
   init.process({type: 'amber'}, [
     // Prompt for these values.
-    init.prompt('title', 'ACME Application'),
+    init.prompt('title', 'Application or Library Title'),
     init.prompt('name', function (value, data, done) {
       var words = remembered.title.split(/\W/);
       words = words.filter(function (x) {
