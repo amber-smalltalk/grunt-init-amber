@@ -72,7 +72,7 @@ exports.template = function(grunt, init, done) {
       value = words.length ? words.join('') : 'MysteriousApp';
       done(null, value);
     }),
-    init.prompt('description', 'The ACME Application.'),
+    init.prompt('description', 'The Application or The Library doing The Thing.'),
     init.prompt('author_name'),
     init.prompt('author_email'),
     {
