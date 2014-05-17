@@ -24,18 +24,64 @@ exports.warnOn = '*';
 
 // The actual init template.
 exports.template = function(grunt, init, done) {
-  init.prompts.name.message= 'Name of the Amber application.';
-  init.prompts.name.validator= /^[A-Z][A-Za-z0-9]*$/;
+  var remembered = {};
+  function rememberViaValidator(name) {
+    var oldValidator = init.prompts[name].validator || function (line) {
+      return true;
+    };
+
+    var newValidator;
+    switch (oldValidator.length) { //apply would not work, .length is used to call it differently
+      case 1:
+        newValidator = function (line) {
+          remembered[name] = line;
+          return oldValidator.call(this, line);
+        };
+        break;
+      case 2:
+        newValidator = function (line, next) {
+          remembered[name] = line;
+          return oldValidator.call(this, line, next);
+        };
+        break;
+      default:
+        throw new Error("Panic: " + oldValidator.length + "-argument validator for " + name + ".");
+    }
+
+    init.prompts[name].validator = newValidator;
+  }
+
+  function capitalize(string) {
+    return string[0].toUpperCase() + string.slice(1).toLowerCase();
+  }
+
+  init.prompts.name.message= 'Main class and package of Amber application.\nProject name is derived by lowercasing this.';
+  init.prompts.name.validator= function (line) { return /^[A-Z][A-Za-z0-9]*$/.test(line) };
   init.prompts.name.warning= 'Must be a valid class name: only alphanumeric and starting with an uppercase letter!';
+  rememberViaValidator('name');
+  rememberViaValidator('title');
 
   init.process({type: 'amber'}, [
     // Prompt for these values.
-    init.prompt('name', 'AmberApplication'),
-    init.prompt('title'),
-    init.prompt('description', 'Amber Application.'),
+    init.prompt('title', 'Application or Library Title'),
+    init.prompt('name', function (value, data, done) {
+      var words = remembered.title.split(/\W/);
+      words = words.filter(function (x) {
+        return x && x !== "none";
+      }).map(capitalize);
+      value = words.length ? words.join('') : 'MysteriousApp';
+      done(null, value);
+    }),
+    init.prompt('description', 'The ACME Application.'),
+    init.prompt('author_name'),
+    init.prompt('author_email'),
     {
       name: 'namespace',
       message: 'Namespace of the new Amber package.',
+      altDefault: function(value, data, done) {
+        value = 'amber-' + remembered.name.toLowerCase();
+        done(null, value);
+      },
       validator: /^[a-z][a-z0-9/\-]*$/,
       warning: 'Only lowercase letters, numbers, and - are allowed in namespaces!'
     },
@@ -43,10 +89,8 @@ exports.template = function(grunt, init, done) {
     init.prompt('repository'),
     init.prompt('homepage'),
     init.prompt('bugs'),
-    init.prompt('licenses', 'MIT'),
-    init.prompt('author_name'),
-    init.prompt('author_email'),
-    init.prompt('author_url')
+    init.prompt('author_url'),
+    init.prompt('licenses', 'MIT')
   ], function(err, props) {
     // Files to copy (and process).
     var files = init.filesToCopy(props);
@@ -59,6 +103,8 @@ exports.template = function(grunt, init, done) {
 
     // Clean up non-npm props.
     delete props.namespace;
+
+    props.name = props.name.toLowerCase();
 
     // A few additional properties.
     props.keywords = ['Amber', 'Smalltalk'];
