@@ -9,7 +9,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('amber-dev');
 
   // Default task.
-  //grunt.registerTask('default', ['']);
+  grunt.registerTask('default', ['amberc:all']);
   grunt.registerTask('test', ['amberc:test_runner', 'execute:test_runner', 'clean:test_runner']);
 
   // Project configuration.
@@ -27,6 +27,13 @@ module.exports = function(grunt) {
         amber_dir: path.join(__dirname, "bower_components", "amber"),
         library_dirs: ['src'],
         closure_jar: ''
+      },
+      all: {
+        src: [
+            'src/{%= name %}.st', // list all sources in dependency order
+            'src/{%= name %}-Tests.st' // list all tests in dependency order
+        ],
+        libraries: ['SUnit', 'Web']
       },
       test_runner: {
         src: ['node_modules/amber-dev/lib/Test.st'],
