@@ -29,7 +29,10 @@ module.exports = function(grunt) {
         closure_jar: ''
       },
       all: {
-        src: ['src/*.st'],
+        src: [
+            'src/{%= name %}.st', // list all sources in dependency order
+            'src/{%= name %}-Tests.st' // list all tests in dependency order
+        ],
         libraries: ['SUnit', 'Web']
       },
       test_runner: {
