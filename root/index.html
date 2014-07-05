@@ -6,14 +6,11 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="author" content="{%= author_name %}" />
     <script type='text/javascript' src='bower_components/amber/support/requirejs/require.min.js'></script>
-    <script type='text/javascript' src='bower_components/amber/support/amber.js'></script>
+    <script type='text/javascript' src='config.js'></script>
   </head>
 
   <body>
     <script type='text/javascript'>
-      require.config({ paths: {
-          '{%= namespace %}': 'src' //mapping compiled .js files and smalltalk source files
-      }});
       require([
           'amber/devel',
           '{%= namespace %}/{%= name %}'
