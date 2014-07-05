@@ -33,6 +33,7 @@ module.exports = function(grunt) {
             'src/{%= name %}.st', // list all sources in dependency order
             'src/{%= name %}-Tests.st' // list all tests in dependency order
         ],
+        amd_namespace: '{%= namespace %}',
         libraries: ['SUnit', 'Web']
       },
       test_runner: {
