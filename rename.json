@@ -1,5 +1,6 @@
 {
   "gitignore-file": ".gitignore",
+  "localamdjson-file": "local.amd.json",
   "src/name.js": "src/{%= name %}.js",
   "src/name.st": "src/{%= name %}.st",
   "src/test.js": "src/{%= name %}-Tests.js",
