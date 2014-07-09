@@ -128,7 +128,6 @@ exports.template = function(grunt, init, done) {
 
     // generate bower.json file
     grunt.file.write('bower.json', JSON.stringify({
-
         "name": props.name,
         "description": props.description,
         "version": props.version,
@@ -153,6 +152,9 @@ exports.template = function(grunt, init, done) {
         "private": false,
         "dependencies": {
             "amber": "~0.12.4"
+        },
+        "devDependencies": {
+            "helios": "~0.1.1"
         }
     }, null, 4));
 
