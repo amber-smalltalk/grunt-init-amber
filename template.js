@@ -116,7 +116,7 @@ exports.template = function(grunt, init, done) {
       "grunt": "~0.4.0",
       "grunt-execute": "~0.2.1",
       "grunt-contrib-clean": "~0.5.0",
-      "amber-dev": "~0.1.1"
+      "amber-dev": "~0.1.5"
     };
     props.node_version = '>= 0.8.0';
     props.scripts = {
@@ -152,7 +152,7 @@ exports.template = function(grunt, init, done) {
         "license": props.licenses,
         "private": false,
         "dependencies": {
-            "amber": "~0.12.4"
+            "amber": "~0.12.6"
         }
     }, null, 4));
 
