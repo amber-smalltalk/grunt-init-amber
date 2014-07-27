@@ -9,6 +9,6 @@
         "jquery-ui": "bower_components/jquery-ui/jquery-ui.min",
         "jquery": "bower_components/jquery/jquery.min"
     },
-    include: ['{%= namespace %}/{%= name %}', 'amber/deploy'],
+    include: ['{%= namespace %}/{%= name %}', 'amber/deploy', 'amber/requirejs/require.min'],
     out: "all-in-1.js"
 })
