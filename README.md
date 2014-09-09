@@ -4,8 +4,10 @@
 ## Installation (the Amber way)
 
 If you want to go the completely integrated Amber way you should not use this grunt-init template directly.
-Use [amber-cli](https://github.com/amber-smalltalk/amber-cli) instead.
-Installation is done via `npm install -g amber-cli`.
+Use [amber-cli](https://www.npmjs.org/package/amber-cli) instead.
+Installation is done via `(sudo) npm install -g amber-cli`
+(in case you have old Amber CLI installed from `amber` package itself, which is now defunct,
+you should uninstall it first with `(sudo) npm uninstall -g amber`).
 
 Then you can stop reading here and jump over to the amber-cli documentation.
 
