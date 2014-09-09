@@ -11,11 +11,7 @@
 
   <body>
     <script type='text/javascript'>
-      require([
-          'amber/devel',
-          '{%= namespace %}/{%= name %}',
-          '{%= namespace %}/{%= name %}-Tests'
-      ], function (smalltalk) {
+      require(['devel'], function (smalltalk) {
           smalltalk.initialize({
             //used for all new packages in IDE
             'transport.defaultAmdNamespace': "{%= namespace %}"
