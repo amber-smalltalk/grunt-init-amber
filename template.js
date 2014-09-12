@@ -116,10 +116,13 @@ exports.template = function(grunt, init, done) {
       "grunt": "~0.4.0",
       "grunt-execute": "~0.2.1",
       "grunt-contrib-clean": "~0.5.0",
+      "requirejs": "^2.1.15",
       "amber-dev": "~0.2.0"
     };
     props.node_version = '>= 0.8.0';
     props.scripts = {
+      "devel": "amber config && node node_modules/requirejs/bin/r.js -o devel.build.js",
+      "deploy": "amber config && node node_modules/requirejs/bin/r.js -o deploy.build.js",
       "test": "grunt test"
     };
 
