@@ -5,12 +5,15 @@ module.exports = function (grunt) {
 
     // These plugins provide necessary tasks.
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-requirejs');
     grunt.loadNpmTasks('grunt-execute');
     grunt.loadNpmTasks('amber-dev');
 
     // Default task.
     grunt.registerTask('default', ['amberc:all']);
     grunt.registerTask('test', ['amberc:test_runner', 'execute:test_runner', 'clean:test_runner']);
+    grunt.registerTask('devel', ['amdconfig:app', 'requirejs:devel']);
+    grunt.registerTask('deploy', ['amdconfig:app', 'requirejs:deploy']);
 
     // Project configuration.
     grunt.initConfig({
@@ -47,6 +50,31 @@ module.exports = function (grunt) {
                 main_class: 'NodeTestRunner',
                 output_name: 'test_runner'
             }
+        },
+
+        amdconfig: {app: {dest: 'config.js'}},
+
+        requirejs: {
+            deploy: {options: {
+                mainConfigFile: "config.js",
+                onBuildWrite: function (moduleName, path, contents) {
+                    return moduleName === "config" ? contents + "\nrequire.config({map:{'*':{app:'deploy'}}});" : contents;
+                },
+                pragmas: {
+                    excludeIdeData: true,
+                    excludeDebugContexts: true
+                },
+                include: ['config', 'node_modules/requirejs/require', 'deploy'],
+                out: "the.js"
+            }},
+            devel: {options: {
+                mainConfigFile: "config.js",
+                onBuildWrite: function (moduleName, path, contents) {
+                    return moduleName === "config" ? contents + "\nrequire.config({map:{'*':{app:'devel'}}});" : contents;
+                },
+                include: ['config', 'node_modules/requirejs/require'],
+                out: "the.js"
+            }}
         },
 
         execute: {
