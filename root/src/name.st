@@ -1,4 +1,4 @@
-Smalltalk current createPackage: '{%= name %}'!
+Smalltalk createPackage: '{%= name %}'!
 Object subclass: #{%= name %}
 	instanceVariableNames: ''
 	package: '{%= name %}'!
