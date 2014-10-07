@@ -113,7 +113,7 @@ exports.template = function(grunt, init, done) {
     // A few additional properties.
     props.keywords = ['Amber', 'Smalltalk'];
     props.devDependencies = {
-      "amber-dev": "^0.2.1",
+      "amber-dev": "^0.2.2",
       "grunt": "^0.4.5",
       "grunt-contrib-clean": "^0.6.0",
       "grunt-contrib-requirejs": "^0.4.4",
@@ -153,7 +153,7 @@ exports.template = function(grunt, init, done) {
         "license": props.licenses,
         "private": false,
         "dependencies": {
-            "amber": "^0.13.0"
+            "amber": "^0.13.0-beta"
         },
         "devDependencies": {
             "helios": "^0.1.1"
