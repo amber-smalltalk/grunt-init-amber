@@ -1,8 +1,8 @@
 define([
     'amber/deploy',
-    // --- packages used only during development begin here ---
+    // --- packages to be deployed begin here ---
     '{%= namespace %}/{%= name %}'
-    // --- packages used only during development end here ---
+    // --- packages to be deployed end here ---
 ], function (amber) {
     return amber;
 });
