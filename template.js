@@ -153,7 +153,7 @@ exports.template = function(grunt, init, done) {
         "license": props.licenses,
         "private": false,
         "dependencies": {
-            "amber": "^0.13.0-beta"
+            "amber": "^0.13.0"
         },
         "devDependencies": {
             "helios": "^0.1.1"
