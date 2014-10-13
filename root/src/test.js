@@ -1,7 +1,9 @@
-define("{%= namespace %}/{%= name %}-Tests", ["amber_vm/smalltalk", "amber_vm/nil", "amber_vm/_st", "amber_vm/globals", "amber_core/SUnit"], function(smalltalk,nil,_st,globals){
-smalltalk.addPackage('{%= name %}-Tests');
-smalltalk.packages["{%= name %}-Tests"].transport = {"type":"amd","amdNamespace":"{%= namespace %}"};
+define("{%= namespace %}/{%= name %}-Tests", ["amber/boot", "amber_core/SUnit"], function($boot){
+var $core=$boot.api,nil=$boot.nil,$recv=$boot.asReceiver,$globals=$boot.globals;
+var smalltalk=$core,_st=$recv,globals=$globals;
+$core.addPackage('{%= name %}-Tests');
+$core.packages["{%= name %}-Tests"].transport = {"type":"amd","amdNamespace":"{%= namespace %}"};
 
-smalltalk.addClass('{%= name %}Test', globals.TestCase, [], '{%= name %}-Tests');
+$core.addClass('{%= name %}Test', $globals.TestCase, [], '{%= name %}-Tests');
 
 });

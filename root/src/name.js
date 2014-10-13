@@ -1,7 +1,9 @@
-define("{%= namespace %}/{%= name %}", ["amber_vm/smalltalk", "amber_vm/nil", "amber_vm/_st", "amber_vm/globals", "amber_core/Kernel-Objects"], function(smalltalk,nil,_st,globals){
-smalltalk.addPackage('{%= name %}');
-smalltalk.packages["{%= name %}"].transport = {"type":"amd","amdNamespace":"{%= namespace %}"};
+define("{%= namespace %}/{%= name %}", ["amber/boot", "amber_core/Kernel-Objects"], function($boot){
+var $core=$boot.api,nil=$boot.nil,$recv=$boot.asReceiver,$globals=$boot.globals;
+var smalltalk=$core,_st=$recv,globals=$globals;
+$core.addPackage('{%= name %}');
+$core.packages["{%= name %}"].transport = {"type":"amd","amdNamespace":"{%= namespace %}"};
 
-smalltalk.addClass('{%= name %}', globals.Object, [], '{%= name %}');
+$core.addClass('{%= name %}', $globals.Object, [], '{%= name %}');
 
 });
