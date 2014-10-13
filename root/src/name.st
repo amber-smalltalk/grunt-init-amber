@@ -22,7 +22,7 @@ augmentPage
 	'#jquery-append' asJQuery click: [ self doJQueryAppend ]
 ! !
 
-!ApplicationOrLibraryTitle class methodsFor: 'starting'!
+!{%= name %} class methodsFor: 'starting'!
 
 start
 	self new augmentPage
