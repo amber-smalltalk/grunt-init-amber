@@ -113,7 +113,7 @@ exports.template = function(grunt, init, done) {
     // A few additional properties.
     props.keywords = ['Amber', 'Smalltalk'];
     props.devDependencies = {
-      "amber-dev": "^0.2.2",
+      "amber-dev": "^0.2.3",
       "grunt": "^0.4.5",
       "grunt-contrib-clean": "^0.6.0",
       "grunt-contrib-requirejs": "^0.4.4",
@@ -157,7 +157,7 @@ exports.template = function(grunt, init, done) {
         },
         "devDependencies": {
             "amber-ide-starter-dialog": "^0.1.0",
-            "helios": "^0.1.1"
+            "helios": "^0.2.o"
         }
     }, null, 4));
 
