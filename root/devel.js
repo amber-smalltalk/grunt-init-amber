@@ -1,6 +1,6 @@
 define([
     'amber/devel',
-    'deploy',
+    './deploy',
     // --- packages used only during development begin here ---
     '{%= namespace %}/{%= name %}-Tests'
     // --- packages used only during development end here ---
