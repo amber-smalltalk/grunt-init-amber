@@ -153,11 +153,11 @@ exports.template = function(grunt, init, done) {
         "license": props.licenses,
         "private": false,
         "dependencies": {
-            "amber": "^0.13.0"
+            "amber": "^0.13.2"
         },
         "devDependencies": {
             "amber-ide-starter-dialog": "^0.1.0",
-            "helios": "^0.2.0"
+            "helios": "^0.3.0"
         }
     }, null, 4));
 
