@@ -4,7 +4,7 @@
 
 ## Getting Started
 
-Brought project alive (for example after `git clone`):
+To bring project alive (for example after `git clone`):
 
 ```sh
 npm install
