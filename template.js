@@ -159,7 +159,7 @@ exports.template = function(grunt, init, done) {
         "devDependencies": {
             "amber-ide-starter-dialog": "^0.1.0",
             "amber-attic": "^0.1.5-0",
-            "helios": "^0.4.0"
+            "helios": "^0.4.0-0"
         }
     }, null, 4));
 
