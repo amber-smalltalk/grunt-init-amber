@@ -154,7 +154,7 @@ exports.template = function(grunt, init, done) {
         "license": props.licenses,
         "private": false,
         "dependencies": {
-            "amber": "^0.14.10"
+            "amber": "^0.14.13"
         },
         "devDependencies": {
             "amber-ide-starter-dialog": "^0.1.0",
