@@ -3,9 +3,9 @@ define([
     './deploy',
     // --- packages used only during development begin here ---
     '{%= namespace %}/{%= name %}-Tests',
-    'amber-attic/Benchfib',
-    'amber-attic/Examples',
-    'amber-attic/IDE'
+    'amber/legacy/Benchfib',
+    'amber/legacy/Examples',
+    'amber/legacy/IDE'
     // --- packages used only during development end here ---
 ], function (amber) {
     return amber;
