@@ -79,7 +79,7 @@ $recv(tag)._with_((function(html){
 //>>excludeStart("ctx", pragmas.excludeDebugContexts);
 return $core.withContext(function($ctx2) {
 //>>excludeEnd("ctx");
-return $recv($recv(html)._li())._with_("Amber Web #with added me!");
+return $recv($recv(html)._li())._with_("Amber Web #with: added me!");
 //>>excludeStart("ctx", pragmas.excludeDebugContexts);
 }, function($ctx2) {$ctx2.fillBlock({html:html},$ctx1,1)});
 //>>excludeEnd("ctx");
@@ -94,7 +94,7 @@ return self;
 },
 //>>excludeStart("ide", pragmas.excludeIdeData);
 args: [],
-source: "doAmberWith\x0a\x09| tag |\x0a\x09tag := (HTMLCanvas onJQuery: '#output-list' asJQuery) root.\x0a\x09tag with: [ :html | html li with: 'Amber Web #with added me!' ]",
+source: "doAmberWith\x0a\x09| tag |\x0a\x09tag := (HTMLCanvas onJQuery: '#output-list' asJQuery) root.\x0a\x09tag with: [ :html | html li with: 'Amber Web #with: added me!' ]",
 referencedClasses: ["HTMLCanvas"],
 //>>excludeEnd("ide");
 messageSends: ["root", "onJQuery:", "asJQuery", "with:", "li"]
