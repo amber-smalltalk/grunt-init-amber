@@ -1,22 +1,19 @@
 # [Amber Smalltalk](http://amber-lang.net) application generator.
 
+The intention of this tool is to automate the creation of Amber projects based on [grunt-init](http://gruntjs.com/project-scaffolding).
 
-## Installation (the Amber way)
+It is conveniently integrated into the `amber-cli` commandline tool, which should be preferred over using this project directly with `grunt-init`.
 
-If you want to go the completely integrated Amber way you should not use this grunt-init template directly.
-Use [amber-cli](https://www.npmjs.org/package/amber-cli) instead.
-Installation is done via `(sudo) npm install -g amber-cli`
-(in case you have old Amber CLI installed from `amber` package itself, which is now defunct,
-you should uninstall it first with `(sudo) npm uninstall -g amber`).
-
-Then you can stop reading here and jump over to the amber-cli documentation.
+Installation and initial getting started instructions can be found [here](https://www.npmjs.com/package/amber#getting-amber).
 
 
-## Installation (the [Grunt](http://gruntjs.com/project-scaffolding) way)
+#### Read on if you insist on doing it the [grunt-init](http://gruntjs.com/project-scaffolding) way
+
+Please note that `amber-cli` performs some additional project creation steps which you will be missing if you continue this way.
 
 Install [grunt-init](http://gruntjs.com/project-scaffolding) if you have not already done so.
 
-Place this template in your `~/.grunt-init/` directory after installing grunt-init with the following command.
+Place this template in your `~/.grunt-init/` directory using the following command:
 
 ```
 git clone git://github.com/amber-smalltalk/grunt-init-amber.git ~/.grunt-init/amber
@@ -25,11 +22,11 @@ git clone git://github.com/amber-smalltalk/grunt-init-amber.git ~/.grunt-init/am
 _Windows users, see [the grunt-init documentation](http://gruntjs.com/project-scaffolding) for the correct directory destination_
 
 
-At the command-line, cd into an empty directory, run this command and follow the prompts.
+At the command-line, change into an empty directory, run this command and follow the prompts.
 
 ```
 grunt-init amber
 ```
 
-_Note that this template will generate files in the current directory,
+_Note: this template will generate files in the current directory,
 so be sure to change to a new directory first if you do not want to overwrite existing files._
