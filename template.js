@@ -158,6 +158,7 @@ exports.template = function (grunt, init, done) {
             "private": false,
             "dependencies": {
                 "amber": "^0.14.14",
+                "amber-contrib-jquery": ">=0.1.0",
                 "amber-contrib-web": ">=0.1.0"
             },
             "devDependencies": {
