@@ -1,6 +1,7 @@
 # [Amber Smalltalk](http://amber-lang.net) application generator.
 
-The intention of this tool is to automate the creation of Amber projects based on [grunt-init](http://gruntjs.com/project-scaffolding).
+The intention of this tool is to automate the creation of Amber projects.
+This tool is based on [grunt-init](http://gruntjs.com/project-scaffolding).
 
 It is conveniently integrated into the `amber-cli` commandline tool, which should be preferred over using this project directly with `grunt-init`.
 
