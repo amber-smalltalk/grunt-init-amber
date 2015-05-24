@@ -1,6 +1,6 @@
 define("{%= namespace %}/{%= name %}", ["amber/boot"
 //>>excludeStart("imports", pragmas.excludeImports);
-, "amber/web/Web", "amber/jquery/Wrappers-JQuery"
+, "amber/jquery/Wrappers-JQuery", "amber/web/Web", "silk/Silk"
 //>>excludeEnd("imports");
 , "amber_core/Kernel-Objects"], function($boot
 //>>excludeStart("imports", pragmas.excludeImports);
@@ -10,7 +10,7 @@ define("{%= namespace %}/{%= name %}", ["amber/boot"
 var $core=$boot.api,nil=$boot.nil,$recv=$boot.asReceiver,$globals=$boot.globals;
 $core.addPackage('{%= name %}');
 $core.packages["{%= name %}"].innerEval = function (expr) { return eval(expr); };
-$core.packages["{%= name %}"].imports = ["amber/jquery/Wrappers-JQuery", "amber/web/Web"];
+$core.packages["{%= name %}"].imports = ["amber/jquery/Wrappers-JQuery", "amber/web/Web", "silk/Silk"];
 $core.packages["{%= name %}"].transport = {"type":"amd","amdNamespace":"{%= namespace %}"};
 
 $core.addClass('{%= name %}', $globals.Object, [], '{%= name %}');
@@ -40,13 +40,22 @@ return self._doAmberWith();
 //>>excludeStart("ctx", pragmas.excludeDebugContexts);
 $ctx1.sendIdx["click:"]=1;
 //>>excludeEnd("ctx");
+$recv("#silk-tag"._asSilk())._on_bind_("click",(function(){
+//>>excludeStart("ctx", pragmas.excludeDebugContexts);
+return $core.withContext(function($ctx2) {
+//>>excludeEnd("ctx");
+return self._doSilkTAG();
+//>>excludeStart("ctx", pragmas.excludeDebugContexts);
+}, function($ctx2) {$ctx2.fillBlock({},$ctx1,2)});
+//>>excludeEnd("ctx");
+}));
 $recv("#jquery-append"._asJQuery())._click_((function(){
 //>>excludeStart("ctx", pragmas.excludeDebugContexts);
 return $core.withContext(function($ctx2) {
 //>>excludeEnd("ctx");
 return self._doJQueryAppend();
 //>>excludeStart("ctx", pragmas.excludeDebugContexts);
-}, function($ctx2) {$ctx2.fillBlock({},$ctx1,2)});
+}, function($ctx2) {$ctx2.fillBlock({},$ctx1,3)});
 //>>excludeEnd("ctx");
 }));
 return self;
@@ -56,10 +65,10 @@ return self;
 },
 //>>excludeStart("ide", pragmas.excludeIdeData);
 args: [],
-source: "augmentPage\x0a\x09'#amber-with' asJQuery click: [ self doAmberWith ].\x0a\x09'#jquery-append' asJQuery click: [ self doJQueryAppend ]",
+source: "augmentPage\x0a\x09'#amber-with' asJQuery click: [ self doAmberWith ].\x0a\x09'#silk-tag' asSilk on: #click bind: [ self doSilkTAG ].\x0a\x09'#jquery-append' asJQuery click: [ self doJQueryAppend ]",
 referencedClasses: [],
 //>>excludeEnd("ide");
-messageSends: ["click:", "asJQuery", "doAmberWith", "doJQueryAppend"]
+messageSends: ["click:", "asJQuery", "doAmberWith", "on:bind:", "asSilk", "doSilkTAG", "doJQueryAppend"]
 }),
 $globals.{%= name %});
 
@@ -122,6 +131,30 @@ source: "doJQueryAppend\x0a\x09'#output-list' asJQuery append: '<li>jQuery appen
 referencedClasses: [],
 //>>excludeEnd("ide");
 messageSends: ["append:", "asJQuery"]
+}),
+$globals.{%= name %});
+
+$core.addMethod(
+$core.method({
+selector: "doSilkTAG",
+protocol: 'action',
+fn: function (){
+var self=this;
+//>>excludeStart("ctx", pragmas.excludeDebugContexts);
+return $core.withContext(function($ctx1) {
+//>>excludeEnd("ctx");
+$recv("#output-list"._asSilk())._LI_("Silk TAG: added me!");
+return self;
+//>>excludeStart("ctx", pragmas.excludeDebugContexts);
+}, function($ctx1) {$ctx1.fill(self,"doSilkTAG",{},$globals.{%= name %})});
+//>>excludeEnd("ctx");
+},
+//>>excludeStart("ide", pragmas.excludeIdeData);
+args: [],
+source: "doSilkTAG\x0a\x09'#output-list' asSilk LI: 'Silk TAG: added me!'",
+referencedClasses: [],
+//>>excludeEnd("ide");
+messageSends: ["LI:", "asSilk"]
 }),
 $globals.{%= name %});
 

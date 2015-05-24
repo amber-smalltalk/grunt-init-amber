@@ -30,6 +30,18 @@
           from your CLI.</li>
       <li>You cannot remove just the jQuery wrapper and retain the Web package,
           as it depends on the jQuery wrapper.</li>
+      <li>If you aren't going to use <code>Silk</code>
+          package from <code>silk</code> module,
+          but want to retain <code>DOMite</code> DOM wrapper,
+          you should run <code>bower uninstall silk --save</code>
+          from your CLI.</li>
+      <li>If you aren't going to use the <code>Silk</code>
+          package from the <code>silk</code> module,
+          nor the DOM wrapper from <code>amber-contrib-domite</code>,
+          you should run <code>bower uninstall silk amber-contrib-domite --save</code>
+          from your CLI.</li>
+      <li>You cannot remove just the <code>DOMite</code> DOM wrapper
+          and retain the Silk package, as it depends on <code>domite</code>.</li>
       <li>As the last step, make sure the dependency tree is in a correct state
           by recreating it: first delete your <code>bower_components</code> folder,
           then run <code>bower install</code> from your CLI.</li>
