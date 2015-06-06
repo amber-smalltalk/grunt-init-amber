@@ -39,7 +39,7 @@ module.exports = function (grunt) {
                 libraries: ['SUnit', 'Web']
             },
             test_runner: {
-                src: ['node_modules/amber-dev/lib/Test.st'],
+                src: [require.resolve('amber-dev/lib/Test.st')],
                 libraries: [
                     /* add dependencies packages here */
                     '{%= name %}', /* add other code-to-test packages here */
