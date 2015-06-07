@@ -12,7 +12,7 @@ module.exports = function (grunt) {
 
     // Default task.
     grunt.registerTask('default', ['amberc:all']);
-    grunt.registerTask('test', ['requirejs:test_runner', 'execute:test_runner', 'clean:test_runner']);
+    grunt.registerTask('test', ['amdconfig:app', 'requirejs:test_runner', 'execute:test_runner', 'clean:test_runner']);
     grunt.registerTask('devel', ['amdconfig:app', 'requirejs:devel']);
     grunt.registerTask('deploy', ['amdconfig:app', 'requirejs:deploy']);
 
