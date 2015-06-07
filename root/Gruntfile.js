@@ -78,8 +78,7 @@ module.exports = function (grunt) {
                     },
                     paths: {"amber_devkit": helpers.libPath},
                     pragmas: {
-                        excludeIdeData: true,
-                        excludeDebugContexts: true
+                        excludeIdeData: true
                     },
                     include: ['config-node', 'app'],
                     optimize: "none",
