@@ -47,7 +47,7 @@ module.exports = function (grunt) {
             deploy: {
                 options: {
                     mainConfigFile: "config.js",
-                    rawText: {"app": 'define("app",["deploy"],function(x){return x});'},
+                    rawText: {"app": 'define(["deploy"],function(x){return x});'},
                     pragmas: {
                         excludeIdeData: true,
                         excludeDebugContexts: true
@@ -59,7 +59,7 @@ module.exports = function (grunt) {
             devel: {
                 options: {
                     mainConfigFile: "config.js",
-                    rawText: {"app": 'define("app",["devel"],function(x){return x});'},
+                    rawText: {"app": 'define(["devel"],function(x){return x});'},
                     include: ['config', 'node_modules/requirejs/require', 'app'],
                     exclude: ['devel'],
                     out: "the.js"
@@ -70,7 +70,7 @@ module.exports = function (grunt) {
                     mainConfigFile: "config.js",
                     rawText: {
                         "app": "(" + function () {
-                            define("app", ["testing", "amber_devkit/NodeTestRunner"], function (amber) {
+                            define(["testing", "amber_devkit/NodeTestRunner"], function (amber) {
                                 amber.initialize();
                                 amber.globals.NodeTestRunner._main();
                             });
