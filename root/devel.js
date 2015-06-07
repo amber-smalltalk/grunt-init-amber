@@ -1,8 +1,7 @@
 define([
+    './testing',
     'amber/devel',
-    './deploy',
     // --- packages used only during development begin here ---
-    '{%= namespace %}/{%= name %}-Tests',
     'amber/legacy/Benchfib',
     'amber/legacy/Examples',
     'amber/legacy/IDE'

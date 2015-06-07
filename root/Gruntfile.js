@@ -1,7 +1,8 @@
 'use strict';
 
 module.exports = function (grunt) {
-    var path = require('path');
+    var path = require('path'),
+        helpers = require('amber-dev/lib/helpers');
 
     // These plugins provide necessary tasks.
     grunt.loadNpmTasks('grunt-contrib-clean');
@@ -11,7 +12,7 @@ module.exports = function (grunt) {
 
     // Default task.
     grunt.registerTask('default', ['amberc:all']);
-    grunt.registerTask('test', ['amberc:test_runner', 'execute:test_runner', 'clean:test_runner']);
+    grunt.registerTask('test', ['requirejs:test_runner', 'execute:test_runner', 'clean:test_runner']);
     grunt.registerTask('devel', ['amdconfig:app', 'requirejs:devel']);
     grunt.registerTask('deploy', ['amdconfig:app', 'requirejs:deploy']);
 
@@ -20,10 +21,10 @@ module.exports = function (grunt) {
         // Metadata.
         // pkg: grunt.file.readJSON('{%= amberjson %}'),
         banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
-            '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
-            '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
-            '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
-            ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
+        '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
+        '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
+        '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
+        ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
         // task configuration
         amberc: {
             options: {
@@ -37,43 +38,55 @@ module.exports = function (grunt) {
                 ],
                 amd_namespace: '{%= namespace %}',
                 libraries: ['SUnit', 'Web']
-            },
-            test_runner: {
-                src: [require.resolve('amber-dev/lib/Test.st')],
-                libraries: [
-                    /* add dependencies packages here */
-                    '{%= name %}', /* add other code-to-test packages here */
-                    'SUnit',
-                    '{%= name %}-Tests' /* add other test packages here */
-                ],
-                main_class: 'NodeTestRunner',
-                output_name: 'test_runner'
             }
         },
 
         amdconfig: {app: {dest: 'config.js'}},
 
         requirejs: {
-            deploy: {options: {
-                mainConfigFile: "config.js",
-                onBuildWrite: function (moduleName, path, contents) {
-                    return moduleName === "config" ? contents + "\nrequire.config({map:{'*':{app:'deploy'}}});" : contents;
-                },
-                pragmas: {
-                    excludeIdeData: true,
-                    excludeDebugContexts: true
-                },
-                include: ['config', 'node_modules/requirejs/require', 'deploy'],
-                out: "the.js"
-            }},
-            devel: {options: {
-                mainConfigFile: "config.js",
-                onBuildWrite: function (moduleName, path, contents) {
-                    return moduleName === "config" ? contents + "\nrequire.config({map:{'*':{app:'devel'}}});" : contents;
-                },
-                include: ['config', 'node_modules/requirejs/require'],
-                out: "the.js"
-            }}
+            deploy: {
+                options: {
+                    mainConfigFile: "config.js",
+                    rawText: {"app": 'define("app",["deploy"],function(x){return x});'},
+                    pragmas: {
+                        excludeIdeData: true,
+                        excludeDebugContexts: true
+                    },
+                    include: ['config', 'node_modules/requirejs/require', 'app'],
+                    out: "the.js"
+                }
+            },
+            devel: {
+                options: {
+                    mainConfigFile: "config.js",
+                    rawText: {"app": 'define("app",["devel"],function(x){return x});'},
+                    include: ['config', 'node_modules/requirejs/require', 'app'],
+                    exclude: ['devel'],
+                    out: "the.js"
+                }
+            },
+            test_runner: {
+                options: {
+                    mainConfigFile: "config.js",
+                    rawText: {
+                        "app": "(" + function () {
+                            define("app", ["testing", "amber_devkit/NodeTestRunner"], function (amber) {
+                                amber.initialize();
+                                amber.globals.NodeTestRunner._main();
+                            });
+                        } + "());"
+                    },
+                    paths: {"amber_devkit": helpers.libPath},
+                    pragmas: {
+                        excludeIdeData: true,
+                        excludeDebugContexts: true
+                    },
+                    include: ['config-node', 'app'],
+                    optimize: "none",
+                    wrap: helpers.nodeWrap('app'),
+                    out: "test_runner.js"
+                }
+            }
         },
 
         execute: {
