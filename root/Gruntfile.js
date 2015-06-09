@@ -81,8 +81,9 @@ module.exports = function (grunt) {
                         excludeIdeData: true
                     },
                     include: ['config-node', 'app'],
+                    insertRequire: ['app'],
                     optimize: "none",
-                    wrap: helpers.nodeWrap('app'),
+                    wrap: helpers.nodeWrapperWithShebang,
                     out: "test_runner.js"
                 }
             }
