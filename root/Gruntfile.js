@@ -29,7 +29,7 @@ module.exports = function (grunt) {
         amberc: {
             options: {
                 amber_dir: path.join(__dirname, "bower_components", "amber"),
-                library_dirs: ['src', 'bower_components/amber/contrib/src']
+                configFile: "config.js"
             },
             all: {
                 src: [
@@ -37,7 +37,7 @@ module.exports = function (grunt) {
                     'src/{%= name %}-Tests.st' // list all tests in dependency order
                 ],
                 amd_namespace: '{%= namespace %}',
-                libraries: ['SUnit', 'Web']
+                libraries: ['amber_core/SUnit', 'amber/web/Web', 'silk/Silk']
             }
         },
 

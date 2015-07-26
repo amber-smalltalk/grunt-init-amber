@@ -42,6 +42,10 @@
           from your CLI.</li>
       <li>You cannot remove just the <code>DOMite</code> DOM wrapper
           and retain the Silk package, as it depends on <code>domite</code>.</li>
+      <li>Your <code>Gruntfile.js</code> may contain references
+          to <code>Web</code> and/or <code>Silk</code> in <code>libraries</code>
+          field(s). Fix those fields to not contain non-existing libraries (optionally
+          add other needed ones, like <code>domite</code> or <code>Wrappers-JQuery</code>).</li>
       <li>As the last step, make sure the dependency tree is in a correct state
           by recreating it: first delete your <code>bower_components</code> folder,
           then run <code>bower install</code> from your CLI.</li>
