@@ -11,7 +11,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('amber-dev');
 
     // Default task.
-    grunt.registerTask('default', ['amberc:all']);
+    grunt.registerTask('default', ['amdconfig:app', 'amberc:all']);
     grunt.registerTask('test', ['amdconfig:app', 'requirejs:test_runner', 'execute:test_runner', 'clean:test_runner']);
     grunt.registerTask('devel', ['amdconfig:app', 'requirejs:devel']);
     grunt.registerTask('deploy', ['amdconfig:app', 'requirejs:deploy']);
