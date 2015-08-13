@@ -44,6 +44,9 @@ module.exports = function (grunt) {
         amdconfig: {app: {dest: 'config.js'}},
 
         requirejs: {
+            options: {
+                useStrict: true
+            },
             deploy: {
                 options: {
                     mainConfigFile: "config.js",
