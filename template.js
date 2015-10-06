@@ -116,7 +116,7 @@ exports.template = function (grunt, init, done) {
         // A few additional properties.
         props.keywords = ['Amber', 'Smalltalk'];
         props.devDependencies = {
-            "amber-dev": "^0.7.0",
+            "amber-dev": "^0.8.0",
             "grunt": "^0.4.5",
             "grunt-contrib-clean": "^0.6.0",
             "grunt-contrib-requirejs": "^0.4.4",
@@ -157,7 +157,7 @@ exports.template = function (grunt, init, done) {
             "license": props.licenses,
             "private": false,
             "dependencies": {
-                "amber": "^0.14.14",
+                "amber": "^0.14.17",
                 "amber-contrib-jquery": ">=0.1.0",
                 "amber-contrib-web": ">=0.1.0",
                 "amber-contrib-domite": ">=0.3.1",
@@ -166,7 +166,7 @@ exports.template = function (grunt, init, done) {
             "devDependencies": {
                 "amber-ide-starter-dialog": "^0.1.0",
                 "amber-contrib-legacy": "^0.2.1",
-                "helios": ">=0.5.0"
+                "helios": ">=0.5.3"
             }
         }, null, 4));
 
