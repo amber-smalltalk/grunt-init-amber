@@ -123,7 +123,7 @@ exports.template = function (grunt, init, done) {
             "grunt-execute": "^0.2.2",
             "requirejs": "^2.1.15"
         };
-        props.node_version = '>=0.10.0';
+        props.node_version = '0.10.x || 0.12.x || >=4.0.0';
         props.scripts = {
             "test": "grunt test"
         };
