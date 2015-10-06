@@ -51,8 +51,8 @@ module.exports = function (grunt) {
                 options: {
                     mainConfigFile: "config.js",
                     rawText: {
-                        "amber/Platform": 'define(["amber_core/Platform-Browser"],{});',
-                        "app": 'define(["deploy"],function(x){return x});'
+                        "amber/Platform": '/*stub*/',
+                        "app": 'define(["deploy"],function(x){return x});define("amber/Platform",["amber_core/Platform-Browser"],{});'
                     },
                     pragmas: {
                         excludeIdeData: true,
@@ -66,8 +66,8 @@ module.exports = function (grunt) {
                 options: {
                     mainConfigFile: "config.js",
                     rawText: {
-                        "amber/Platform": 'define(["amber_core/Platform-Browser"],{});',
-                        "app": 'define(["devel"],function(x){return x});'
+                        "amber/Platform": '/*stub*/',
+                        "app": 'define(["devel"],function(x){return x});define("amber/Platform",["amber_core/Platform-Browser"],{});'
                     },
                     include: ['config', 'node_modules/requirejs/require', 'app'],
                     exclude: ['devel'],
