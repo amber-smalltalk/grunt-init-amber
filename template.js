@@ -118,7 +118,7 @@ exports.template = function (grunt, init, done) {
         props.devDependencies = {
             "amber-dev": "^0.8.0",
             "grunt": "^0.4.5",
-            "grunt-contrib-clean": "^0.6.0",
+            "grunt-contrib-clean": "^0.7.0",
             "grunt-contrib-requirejs": "^0.4.4",
             "grunt-execute": "^0.2.2",
             "requirejs": "^2.1.15"
