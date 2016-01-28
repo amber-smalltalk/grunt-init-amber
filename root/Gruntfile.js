@@ -59,6 +59,7 @@ module.exports = function (grunt) {
                         excludeDebugContexts: true
                     },
                     include: ['config', 'node_modules/requirejs/require', 'app'],
+                    optimize: "uglify2",
                     out: "the.js"
                 }
             },
