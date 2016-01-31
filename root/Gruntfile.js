@@ -81,8 +81,9 @@ module.exports = function (grunt) {
                     rawText: {
                         "app": "(" + function () {
                             define(["testing", "amber_devkit/NodeTestRunner"], function (amber) {
-                                amber.initialize();
-                                amber.globals.NodeTestRunner._main();
+                                amber.initialize().then(function () {
+                                    amber.globals.NodeTestRunner._main();
+                                });
                             });
                         } + "());"
                     },
