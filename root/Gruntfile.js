@@ -2,7 +2,7 @@
 
 module.exports = function (grunt) {
     var path = require('path'),
-        helpers = require('amber-dev/lib/helpers');
+        helpers = require('amber-dev').helpers;
 
     // These plugins provide necessary tasks.
     grunt.loadNpmTasks('grunt-contrib-clean');
