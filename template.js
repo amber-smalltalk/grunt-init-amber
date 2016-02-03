@@ -159,15 +159,15 @@ exports.template = function (grunt, init, done) {
             "dependencies": {
                 "amber": "^0.14.17",
                 "amber-compat-es2015": ">=0.1.0",
-                "amber-contrib-jquery": ">=0.1.0",
-                "amber-contrib-web": ">=0.1.0",
-                "domite": ">=0.3.3",
-                "silk": ">=0.1.5"
+                "amber-contrib-jquery": ">=0.1.0 <0.2.0",
+                "amber-contrib-web": ">=0.1.0 <0.3.0",
+                "domite": ">=0.3.3 <0.4.0",
+                "silk": ">=0.1.5 <0.2.0"
             },
             "devDependencies": {
                 "amber-ide-starter-dialog": "^0.1.0",
                 "amber-contrib-legacy": "^0.2.1",
-                "helios": ">=0.5.3"
+                "helios": ">=0.5.3 <0.6.0"
             }
         }, null, 4));
 
