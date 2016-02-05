@@ -9,6 +9,7 @@
   </head>
 
   <body>
+  <!-- EXAMPLE APP START -->
   <p>This is a sample app. It contains some
   <a href="parts.html">batteries included</a>
   and should be
@@ -18,14 +19,16 @@
   <button id="silk-tag">Hello from Silk >> TAG:</button>
   <button id="jquery-append">Hello from jQuery append</button>
   <ol id="output-list"></ol>
+  <!-- EXAMPLE APP END -->
   <script type='text/javascript'>
       require(['app'], function (amber) {
           amber.initialize({
             //used for all new packages in IDE
             'transport.defaultAmdNamespace': "{%= namespace %}"
+          }).then(function () {
+              require(["amber-ide-starter-dialog"], function (dlg) { dlg.start(); });
+              amber.globals.{%= name %}._start();
           });
-          require(["amber-ide-starter-dialog"], function (dlg) { dlg.start(); });
-          amber.globals.{%= name %}._start();
       });
   </script>
   </body>
