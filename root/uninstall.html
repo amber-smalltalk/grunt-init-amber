@@ -46,10 +46,12 @@
           to <code>Web</code> and/or <code>Silk</code> in <code>libraries</code>
           field(s). Fix those fields to not contain non-existing libraries (optionally
           add other needed ones, like <code>domite</code> or <code>Wrappers-JQuery</code>).</li>
-      <li>As the last step, make sure the dependency tree is in a correct state
-          by recreating it: first delete your <code>bower_components</code> folder,
-          then run <code>bower install</code> from your CLI.</li>
   </ul>
+  <p>If you are sure your app will only be run in modern browser / node.js
+      with Promise present, you can <code>bower uninstall amber-compat-es2015 --save</code>.</p>
+  <p>As the last step, make sure the dependency tree is in a correct state
+      by recreating it: first delete your <code>bower_components</code> folder,
+      then run <code>bower install</code> from your CLI.</p>
   </body>
 
 </html>
