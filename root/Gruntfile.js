@@ -51,14 +51,13 @@ module.exports = function (grunt) {
                 options: {
                     mainConfigFile: "config.js",
                     rawText: {
-                        "amber/Platform": '/*stub*/',
-                        "app": 'define(["deploy"],function(x){return x});define("amber/Platform",["amber_core/Platform-Browser"],{});'
+                        "app": 'define(["deploy"],function(x){return x});'
                     },
                     pragmas: {
                         excludeIdeData: true,
                         excludeDebugContexts: true
                     },
-                    include: ['config', 'node_modules/requirejs/require', 'app'],
+                    include: ['config', 'config-browser', 'node_modules/requirejs/require', 'app'],
                     optimize: "uglify2",
                     out: "the.js"
                 }
@@ -67,10 +66,9 @@ module.exports = function (grunt) {
                 options: {
                     mainConfigFile: "config.js",
                     rawText: {
-                        "amber/Platform": '/*stub*/',
-                        "app": 'define(["devel"],function(x){return x});define("amber/Platform",["amber_core/Platform-Browser"],{});'
+                        "app": 'define(["devel"],function(x){return x});'
                     },
-                    include: ['config', 'node_modules/requirejs/require', 'app'],
+                    include: ['config', 'config-browser', 'node_modules/requirejs/require', 'app'],
                     exclude: ['devel'],
                     out: "the.js"
                 }
