@@ -51,6 +51,8 @@ module.exports = function (grunt) {
                 options: {
                     mainConfigFile: "config.js",
                     rawText: {
+                        "amber/compatibility": "/*stub*/",
+                        "amber/Platform": "/*stub*/",
                         "app": 'define(["deploy"],function(x){return x});'
                     },
                     pragmas: {
@@ -66,6 +68,8 @@ module.exports = function (grunt) {
                 options: {
                     mainConfigFile: "config.js",
                     rawText: {
+                        "amber/compatibility": "/*stub*/",
+                        "amber/Platform": "/*stub*/",
                         "app": 'define(["devel"],function(x){return x});'
                     },
                     include: ['config', 'config-browser', 'node_modules/requirejs/require', 'app'],
