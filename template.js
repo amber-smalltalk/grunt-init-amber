@@ -157,17 +157,17 @@ exports.template = function (grunt, init, done) {
             "license": props.licenses,
             "private": false,
             "dependencies": {
-                "amber": "^0.14.17",
-                "amber-compat-es2015": ">=0.1.0",
-                "amber-contrib-jquery": ">=0.1.0 <0.2.0",
-                "amber-contrib-web": ">=0.1.0 <0.3.0",
-                "domite": ">=0.3.3 <0.4.0",
-                "silk": ">=0.1.5 <0.2.0"
+                "amber": "^0.15.0",
+                "amber-compat-es2015": "^0.1.0",
+                "amber-contrib-jquery": "^0.2.0",
+                "amber-contrib-web": "^0.3.0",
+                "domite": "^0.4.0",
+                "silk": "^0.2.0"
             },
             "devDependencies": {
+                "amber-contrib-legacy": "^0.3,0",
                 "amber-ide-starter-dialog": "^0.1.0",
-                "amber-contrib-legacy": "^0.2.1",
-                "helios": ">=0.5.3 <0.6.0"
+                "helios": "^0.6.0"
             }
         }, null, 4));
 
