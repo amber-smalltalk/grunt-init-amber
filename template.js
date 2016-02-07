@@ -135,7 +135,6 @@ exports.template = function (grunt, init, done) {
         grunt.file.write('bower.json', JSON.stringify({
             "name": props.name,
             "description": props.description,
-            "version": props.version,
             "ignore": [
                 "**/.*",
                 "node_modules",
