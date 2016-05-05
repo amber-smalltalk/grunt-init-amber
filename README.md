@@ -8,6 +8,34 @@ It is conveniently integrated into the `amber-cli` commandline tool, which shoul
 Installation and initial getting started instructions can be found [here](https://www.npmjs.com/package/amber#getting-amber).
 
 
+MOVED
+====
+
+grunt-init-amber is now at https://lolg.it/amber/grunt-init-amber.
+
+.
+
+.
+
+.
+
+.
+
+.
+
+.
+
+.
+
+.
+
+.
+
+.
+
+.
+
+
 #### Read on if you insist on doing it the [grunt-init](http://gruntjs.com/project-scaffolding) way
 
 Please note that `amber-cli` performs some additional project creation steps which you will be missing if you continue this way.
